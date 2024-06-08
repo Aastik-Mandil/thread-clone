@@ -7,6 +7,9 @@ import "../global.css";
 export const metadata: Metadata = {
   title: "Threads",
   description: "A Next.js 14 Meta Threads Applications",
+  icons: {
+    icon: "/assets/logo.svg",
+  },
 };
 
 const inter = Inter({ subsets: ["latin"] });
