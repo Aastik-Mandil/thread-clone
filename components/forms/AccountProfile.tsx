@@ -1,7 +1,14 @@
 "use client";
 
 import React, { ChangeEvent, useState } from "react";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -73,7 +80,7 @@ function AccountProfile({ user, btnTitle }: Props) {
       const imgRes = await startUpload(files);
 
       if (imgRes && imgRes?.[0] && imgRes?.[0]?.fileUrl) {
-        value.profile_photo = imgRes?.[0]?.fileUrl;
+        values.profile_photo = imgRes?.[0]?.fileUrl;
       }
     }
 
@@ -135,6 +142,8 @@ function AccountProfile({ user, btnTitle }: Props) {
                   onChange={(e) => handleImage(e, field.onChange)}
                 />
               </FormControl>
+
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -155,6 +164,8 @@ function AccountProfile({ user, btnTitle }: Props) {
                   {...field}
                 />
               </FormControl>
+
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -175,6 +186,8 @@ function AccountProfile({ user, btnTitle }: Props) {
                   {...field}
                 />
               </FormControl>
+
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -195,6 +208,8 @@ function AccountProfile({ user, btnTitle }: Props) {
                   {...field}
                 />
               </FormControl>
+
+              <FormMessage />
             </FormItem>
           )}
         />
