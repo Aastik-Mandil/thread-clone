@@ -22,7 +22,6 @@ import { createThread } from "@/lib/actions/thread.actions";
 function PostThread({ userId }: { userId: string }) {
   const pathname = usePathname();
   const router = useRouter();
-  //   const [files, setFiles] = useState<File[]>([]);
   const form = useForm({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
@@ -30,7 +29,6 @@ function PostThread({ userId }: { userId: string }) {
       accountId: userId,
     },
   });
-  //   const { startUpload } = useUploadThing("media");
 
   async function onSubmit(values: z.infer<typeof ThreadValidation>) {
     await createThread({

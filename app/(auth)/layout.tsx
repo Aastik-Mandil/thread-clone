@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
-import "../global.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Threads",
