@@ -3,6 +3,7 @@
 import { connectToDB } from "../mongoose";
 import User from "../models/user.model";
 import { revalidatePath } from "next/cache";
+import Thread from "../models/thread.model";
 
 interface Params {
   userId: string;
@@ -46,5 +47,29 @@ export async function fetchUser(userId: string) {
     // });
   } catch (err: any) {
     throw new Error(`Failed to fetch user: ${err?.message}`);
+  }
+}
+
+export async function fetchUserThreads(userId: string) {
+  try {
+    connectToDB();
+
+    const threads = await User.findOne({ id: userId }).populate({
+      path: "threads",
+      model: Thread,
+      populate: {
+        path: "children",
+        model: Thread,
+        populate: {
+          path: "author",
+          model: User,
+          select: "name image id",
+        },
+      },
+    });
+
+    return threads;
+  } catch (err: any) {
+    throw new Error(`Failed to fetch user's Threads: ${err?.message}`);
   }
 }
