@@ -19,7 +19,7 @@ async function ActivityPage() {
   const activity = await getActivity(userInfo?._id);
 
   return (
-    <section className="">
+    <>
       <h1 className="head-text mb-10">Activity</h1>
 
       <section className="mt-10 flex flex-col gap-5">
@@ -50,7 +50,7 @@ async function ActivityPage() {
           <p className="!text-base-regular text-light-3">No activity yet</p>
         )}
       </section>
-    </section>
+    </>
   );
 }
 
